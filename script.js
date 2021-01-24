@@ -1,51 +1,53 @@
-;(() => {
-  const submitButton = document.getElementById("submit")
-  const inputElement = document.getElementById("input")
-  const nameCard = document.getElementById("nameCard")
-  const greetingCard = document.getElementById("greeting")
-  const userElement = document.getElementById("userName")
-  const alternativeGreeting = document.getElementById("alternativeGreeting")
-  const pictureButton = document.querySelectorAll(".pictureButton")
-  const imageWrapper = document.getElementById("imageWrapper")
-  let user
+; (() => {
+  const submitButton = document.getElementById("submit");
+  const inputElement = document.getElementById("input");
+  const nameCard = document.getElementById("nameCard");
+  const greetingCard = document.getElementById("greeting");
+  const userElement = document.getElementById("userName");
+  const alternativeGreeting = document.getElementById("alternativeGreeting");
+  const pictureButton = document.querySelectorAll(".pictureButton");
+  const imageWrapper = document.getElementById("imageWrapper");
+  const form = document.getElementById("nameCard");
 
-  const setUserToDOM = () => {
-    userElement.innerHTML = user
-  }
+  let users;
+  let user;
+  (() => {
+    if (!localStorage.users) {
+      users = ["Hejpa", "Dejpa"];
+    } else {
+      users = JSON.parse(localStorage.getItem("users"));
+    }
+
+  })();
+
+
   const toggleHiddens = () => {
-    nameCard.classList.add("hidden")
-    greetingCard.classList.remove("hidden")
-  }
-  const checkLocalStorage = (() => {
-    if (localStorage.user) {
-      user = localStorage.getItem("user")
-      setUserToDOM()
-      toggleHiddens()
-      alternativeGreeting.innerHTML = "Nice to see you again"
-    }
-  })()
+    nameCard.classList.add("hidden");
+    greetingCard.classList.remove("hidden");
+  };
 
-  const setUserToLocalStorage = () => {
-    localStorage.setItem("user", user)
-    setUserToDOM()
-    toggleHiddens()
-  }
 
-  submitButton.addEventListener("click", () => {
-    if (user.length > 0) {
-      setUserToLocalStorage()
-    }
-  })
+  inputElement.addEventListener("change", (e) => {
+    user = e.target.value;
+  });
 
-  inputElement.addEventListener("keyup", (e) => {
-    user = e.target.value
-    if (e.key === "Enter" && user.length > 0) {
-      setUserToLocalStorage()
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    let capitalized = user.charAt(0).toUpperCase() + user.slice(1);
+    if (users.includes(capitalized)) {
+      alternativeGreeting.innerHTML = "Wait, you're no stranger.. Welcome back";
+    } else {
+      users.push(capitalized);
+      localStorage.setItem("users", JSON.stringify(users));
     }
-  })
+    toggleHiddens();
+    userElement.innerHTML = capitalized;
+
+  });
+
   pictureButton.forEach((button) => {
     button.addEventListener("click", () => {
-      imageWrapper.classList.toggle("hidden")
-    })
-  })
-})()
+      imageWrapper.classList.toggle("hidden");
+    });
+  });
+})();
