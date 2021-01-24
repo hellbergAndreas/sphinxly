@@ -39,7 +39,7 @@
 
   inputElement.addEventListener("keyup", (e) => {
     user = e.target.value
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && user.length > 0) {
       setUserToLocalStorage()
     }
   })
