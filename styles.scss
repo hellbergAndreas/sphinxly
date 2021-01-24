@@ -1,0 +1,263 @@
+@import "./variables.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+}
+body {
+  overflow: hidden;
+}
+.mainSection {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to right top, #65bddf, #6cebcb);
+
+  &__imageWrapper {
+    width: 1100px;
+    height: 650px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 5;
+    top: 70px;
+    padding: 20px;
+    animation-name: image;
+    animation-duration: 0.3s;
+    &__img {
+      height: 100%;
+      width: 100%;
+    }
+    &__button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-right: 20px;
+      margin-top: 20px;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      border: none;
+      background-color: rgba(108, 92, 92, 0.765);
+    }
+    &__button:focus {
+      outline: 0;
+    }
+    &__button:hover {
+      height: 42px;
+      width: 42px;
+      background-color: rgba(171, 171, 171, 0.765);
+    }
+  }
+  &__greeting {
+    justify-content: center;
+    align-items: center;
+
+    &__header {
+      margin-left: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #0f3f49;
+      animation-name: greeting;
+      animation-duration: 2s;
+
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      margin-top: 120px;
+
+      &__name {
+        font-size: 50px;
+        margin: 30px 0px;
+
+        animation-name: userName;
+        animation-duration: 0.8s;
+      }
+    }
+  }
+}
+
+.card {
+  margin-top: 80px;
+  height: 40vh;
+  min-height: 400px;
+  width: 70vw;
+  max-width: 1000px;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+
+  &__button {
+    grid-row: 2;
+    height: 40px;
+    width: 220px;
+    margin-top: 17px;
+    align-self: center;
+    justify-self: end;
+    margin-right: 30px;
+  }
+  &__header {
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 50px;
+    color: #0f3f49;
+    background: rgba(255, 255, 255, 0.751);
+    height: 90px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 30px;
+    animation-name: header;
+    animation-duration: 0.8s;
+  }
+
+  &__inputWrapper {
+    position: relative;
+    height: 55px;
+    width: 80%;
+    overflow: hidden;
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    &__label {
+      &__name {
+        position: absolute;
+        bottom: 5px;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  &__inputWrapper input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding-top: 20px;
+    outline: none;
+    font-size: 18px;
+    background: rgba(0, 0, 255, 0);
+    &:focus,
+    &:valid {
+      & + label span {
+        color: $primary;
+        font-size: 14px;
+        transform: translateY(-150%);
+      }
+      & + label:after {
+        transform: translateX(0%);
+      }
+    }
+  }
+  &__inputWrapper label {
+    position: absolute;
+    bottom: 0px;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+
+    pointer-events: none;
+    border-bottom: 1px solid black;
+  }
+  &__inputWrapper label:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid $primary;
+    left: 0px;
+    bottom: -1px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+}
+.circle {
+  height: 800px;
+  width: 800px;
+  overflow: hidden;
+  background: white;
+  position: absolute;
+  border-radius: 100%;
+  z-index: 0;
+  top: 280px;
+  right: 40px;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  );
+}
+.button {
+  font-family: "Source Sans Pro", sans-serif;
+  height: 60px;
+  width: 140px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: 1px solid #67ced8;
+  font-size: 19px;
+  font-weight: bold;
+  color: #30696e;
+  -webkit-box-shadow: 4px 5px 11px 2px rgba(0, 0, 0, 0.52);
+  box-shadow: 4px 5px 11px 2px rgba(35, 33, 49, 0.101);
+}
+.button:focus {
+  outline: 0;
+}
+.button:hover {
+  background-color: #6ccadd;
+  color: white;
+}
+
+@keyframes header {
+  from {
+    opacity: 0;
+    margin-top: 90px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 50px;
+  }
+}
+@keyframes greeting {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes userName {
+  from {
+    margin-top: 150px;
+  }
+  to {
+    margin-top: 30px;
+  }
+}
+@keyframes image {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}

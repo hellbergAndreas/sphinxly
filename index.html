@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link
+            href="//fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap"
+            rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <section class="mainSection">
+            <div id="imageWrapper" class="hidden mainSection__imageWrapper">
+                <button
+                    class="mainSection__imageWrapper__button pictureButton">X</button>
+                <img alt="image of the cosmos staring deep into your soul"
+                    class="mainSection__imageWrapper__img" src="image.jpeg" />
+            </div>
+            <div class="circle"></div>
+            <div id="greeting" class="hidden card mainSection__greeting">
+                <div class="mainSection__greeting__header">
+
+                    <h2 id="alternativeGreeting">Nice to meet you </h2>
+                    <h1 class="mainSection__greeting__header__name"
+                        id="userName"></h1>
+                    <button class="pictureButton button
+                        mainSection__greeting__header__button">See picture</button>
+                </div>
+            </div>
+            <div class="card" id="nameCard">
+                <div class="card__header">
+                    <h1>Hello stranger</h1>
+                    <p>fancy seing you here, what's your name?</p>
+
+                </div>
+                <div class="card__inputWrapper">
+                    <input id="input" type="text" name="name"
+                        autocomplete="off"
+                        required/>
+                    <label for="name" class="card__inputWrapper__label">
+                        <span class="card__inputWrapper__label__name">Name</span>
+                    </label>
+                </div>
+                <button id="submit" class="card__button button">submit</button>
+            </div>
+        </section>
+        <script src="script.js"></script>
+    </body>
+</html>
